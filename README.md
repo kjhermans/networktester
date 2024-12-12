@@ -98,7 +98,7 @@ Note the following:
 # How to Create Switches / Routers
 
 How to create a router. Don't forget that routers are L3 devices
-and need IP addresses.
+and need IP addresses. Look up for inspiration on that.
 
     "nodes" : {
       "foo" : {
@@ -111,7 +111,7 @@ and need IP addresses.
     }
 
 How to create a switch. In this case, the curly braces of an
-interface definition can remain empty.
+interface definition can / should probably remain empty.
 
     "nodes" : {
       "foo" : {
@@ -124,4 +124,15 @@ interface definition can remain empty.
         }
       }
     }
+
+# How we Determine when the Clock Runs Out
+
+Every test contains a start time (or defaults at zero), and has a
+duration (or defaults as infinite). The maxmimum is taken from all 
+start times plus their respective durations, and this is determined
+to be the length of the test. If this is infinite, it will look for
+any "duration" key at the top of the structure and if present, will
+take that time. Otherwise, the thing runs indefinitely. All time
+indications are in whole seconds.
+
 
