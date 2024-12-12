@@ -128,11 +128,14 @@ interface definition can / should probably remain empty.
 # How we Determine when the Clock Runs Out
 
 Every test contains a start time (or defaults at zero), and has a
-duration (or defaults as infinite). The maxmimum is taken from all 
-start times plus their respective durations, and this is determined
-to be the length of the test. If this is infinite, it will look for
-any "duration" key at the top of the structure and if present, will
-take that time. Otherwise, the thing runs indefinitely. All time
-indications are in whole seconds.
+duration (or defaults as infinite). The maxmimum is taken from the
+general "duration" definition made at the top of the structure, and
+all test start times plus their respective durations: this is determined
+to be the length of the test. If this is infinite, the program will
+not run. All time indications are in whole seconds.
 
-
+A test can also be defined as 'pivotal' (which is a boolean, which only
+makes sense if you set it to true inside the test definition). This
+means that when this process exits, all tests exit. This mechanism allows
+you to define a really large time frame for your test to run in, and
+have it cut short by a single test (which you're probably interested in).
