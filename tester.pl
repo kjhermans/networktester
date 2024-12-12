@@ -223,15 +223,6 @@ sub test {
   }
   if ($description->{success}) {
     $description->{success} =~ s/ROOT/$root/g;
-    $description->{success} =~ s/REDLOG/\/tmp\/red.log/g;
-    $description->{success} =~ s/RED/$root\/src\/red\/main\/red/g;
-    $description->{success} =~ s/CORELOG/\/tmp\/core.log/g;
-    $description->{success} =~ s/CORE/$root\/src\/core\/main\/core/g;
-    $description->{success} =~ s/BLACKLOG/\/tmp\/black.log/g;
-    $description->{success} =~ s/BLACK/$root\/src\/black\/main\/black/g;
-    $description->{success} =~ s/SOLOLOG/\/tmp\/solo.log/g;
-    $description->{success} =~ s/SOLO/$root\/src\/one\/solo/g;
-    $description->{success} =~ s/FRBQ/$root\/src\/nfq\/frbq/g;
     $result = system($description->{success});
     if ($result eq '0' && $failed eq '0') {
       print STDERR "SUCCESS $description->{success} => $result\n";
