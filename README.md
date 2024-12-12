@@ -15,11 +15,11 @@ Just chmod the scripts to 0755 (or something).
 
 # Example to get you going
 
-Typically, a test is run as follows:
+Typically, a test is run as follows (as root):
 
-    ./network.pl mydefinition.json off # To make sure the network is off.
-    ./network.pl mydefinition.json on  # Now it's on again.
-    ./tester.pl mydefinition.json
+    # ./network.pl mydefinition.json off # To make sure the network is off.
+    # ./network.pl mydefinition.json on  # Now it's on again.
+    # ./tester.pl mydefinition.json      # A clock will run all the tests.
 
 The last invocation will block until the defined period of testing
 has run out.
