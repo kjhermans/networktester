@@ -32,7 +32,8 @@ Example of a test definition (untested):
           },
           "tests" : [
             {
-              "executable" : "nc 192.168.1.21 5000 < /etc/passwd",
+              "cwd" : "/etc",
+              "executable" : "nc 192.168.1.21 5000 < ./passwd",
               "start" : 2,
               "duration" : 5
             }
@@ -64,3 +65,16 @@ Example of a test definition (untested):
       "finish" : "./finish.sh"
     }
 
+Note the following:
+
+- Network interfaces will be the concatination of the
+  node name, plus the interface definition name.
+- Inside a test definition, we can:
+  - Specify a command line execution.
+  - A working directory as a context for that execution.
+  - A set of environment variables as a context for that execution.
+  - A start time (in seconds).
+  - A duration (in seconds), or leave it to signify 'this test will run
+    until the end'.
+- There is a short and long form for those definitions.
+- You can define environment variables for all tests.
