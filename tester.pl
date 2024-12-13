@@ -4,7 +4,7 @@ use POSIX ":sys_wait_h";
 use JSON::PP;
 
 my $descriptionfile = shift @ARGV || die "Need description file";
-my $root = shift @ARGV || die "Need source root";
+my $root = shift @ARGV;
 
 my $descriptiontext = `cat $descriptionfile`;
 my $description = decode_json $descriptiontext;
