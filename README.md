@@ -11,7 +11,11 @@ to make changes to your setup in one convenient place.
 The project is coded in Perl, but uses no modules on top of what is
 usually already installed on a Linux system. In other words, you
 should be able to just run them on an average major distro box.
-Just chmod the scripts to 0755 (or something).
+Just chmod the scripts to 0755 (or something similar).
+
+The JSON definition should encompass the definition, in as minimal a
+sense as possible, of any networking that you'd need, and similarly
+wrt firing off things from a (scheduled) shell.
 
 # Example to get you going
 
@@ -24,10 +28,10 @@ Typically, a test is run as follows (as root):
 The last invocation will block until the defined period of testing
 has run out.
 
-Example of a test definition (untested):
+Example of a test definition:
 
     {
-      "duration" : 30,
+      "duration" : 10,
       "env" : { "FOO" : "BAR" },
       "nodes" : {
         "client" : {
